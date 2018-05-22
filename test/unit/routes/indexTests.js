@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* global describe beforeEach it */
 var sinon = require('sinon')
 var proxyquire = require('proxyquire')
@@ -7,7 +8,7 @@ var expect = require('chai').expect
 var path = require('path')
 var express = require('express')
 var nunjucks = require('express-nunjucks')
-var logger = require('../../app/bunyan-logger')
+var logger = require('../../../app/bunyan-logger')
 
 describe('index', function () {
   var request
@@ -16,10 +17,10 @@ describe('index', function () {
     var app = express()
 
     app.set('view engine', 'html')
-    app.set('views', path.join(__dirname, '../../app/views'))
+    app.set('views', path.join(__dirname, '../../../app/views'))
     nunjucks(app)
 
-    var route = proxyquire('../../app/routes/index', {'../bunyan-logger': logger})
+    var route = proxyquire('../../../app/routes/index', {'../bunyan-logger': logger})
 
     route(app)
 
