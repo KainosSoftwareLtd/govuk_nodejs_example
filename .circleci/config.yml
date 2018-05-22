@@ -33,7 +33,10 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      # run tests!
+      # generate assets
+      - run: yarn run generate-assets
+
+      # run tests
       - run: yarn test
 
 
